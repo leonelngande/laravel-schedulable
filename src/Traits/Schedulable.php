@@ -23,7 +23,8 @@ trait Schedulable
      */
     public function initializeSchedulable()
     {
-        $this->dates[] = $this->getScheduleAtColumn();
+        // Ensure that $dates property is treated as an array and properly merge the new column
+        $this->dates = array_unique(array_merge($this->dates ?? [], [$this->getScheduleAtColumn()]));
         $this->addObservableEvents([
             'scheduling',
             'scheduled',
