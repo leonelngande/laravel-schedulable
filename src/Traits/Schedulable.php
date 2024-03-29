@@ -24,7 +24,7 @@ trait Schedulable
     public function initializeSchedulable()
     {
         // Ensure that $dates property is treated as an array and properly merge the new column
-        $this->dates = array_unique(array_merge($this->dates ?? [], [$this->getScheduleAtColumn()]));
+        // $this->dates = array_unique(array_merge($this->dates ?? [], [$this->getScheduleAtColumn()]));
         // Explicitly cast the schedule_at column as datetime
         $this->casts[$this->getScheduleAtColumn()] = 'datetime';
         $this->addObservableEvents([
